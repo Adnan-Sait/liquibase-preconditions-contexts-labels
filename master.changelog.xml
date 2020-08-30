@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <include file="/changelogs/user.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="/changelogs/user_log.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="/changelogs/building.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="/changelogs/building_movement_log.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="/changelogs/user_relations.changelog.xml" relativeToChangelogFile="true" context="dev,test"/>
+    <include file="/changelogs/building_relations.changelog.xml" relativeToChangelogFile="true" context="dev,test"/>
+    <include file="/changelogs/dummy_data.changelog.xml" relativeToChangelogFile="true" context="test"/>
+
+</databaseChangeLog>

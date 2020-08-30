@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
+
+    <changeSet id="user-dummy-data" author="adnan.sait">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="0">Select count(*) from "user"</sqlCheck>
+        </preConditions>
+        <loadData
+                  file="dummy-data/user.csv"
+                  separator=";"
+                  tableName="user">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="email" type="string"/>
+            <column name="password" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="user_log-dummy-data" author="adnan.sait">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="0">Select count(*) from user_log</sqlCheck>
+        </preConditions>
+        <loadData
+                  file="dummy-data/user_log.csv"
+                  separator=";"
+                  tableName="user_log">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="numeric"/>
+            <column name="recorded_timestamp" type="datetime"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="building-dummy-data" author="adnan.sait">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="0">Select count(*) from building</sqlCheck>
+        </preConditions>
+        <loadData
+                  file="dummy-data/building.csv"
+                  separator=";"
+                  tableName="building">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="building_movement_log-dummy-data" author="adnan.sait">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="0">Select count(*) from building_movement_log</sqlCheck>
+        </preConditions>
+        <loadData
+                  file="dummy-data/building_log.csv"
+                  separator=";"
+                  tableName="building_movement_log">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="numeric"/>
+            <column name="building_id" type="numeric"/>
+            <column name="action" type="string"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
